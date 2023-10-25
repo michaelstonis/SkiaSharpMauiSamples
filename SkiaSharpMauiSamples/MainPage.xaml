@@ -5,9 +5,9 @@
              Title="SKIA Sharp">
     <StackLayout Padding="24,60,24,24"
                  Spacing="8">
-        <Button Clicked="RadialProgress_Clicked"
-                Text="Radial Progress" />
         <Button Clicked="LinearProgress_Clicked"
                 Text="Linear Progress" />
+        <Button Clicked="RadialProgress_Clicked"
+                Text="Radial Progress" />
     </StackLayout>
 </ContentPage>

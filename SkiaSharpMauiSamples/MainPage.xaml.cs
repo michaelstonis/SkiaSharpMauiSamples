@@ -22,5 +22,3 @@ public partial class MainPage : ContentPage
         this.Navigation.PushAsync(new LinearProgressPage());
     }
 }
-
-

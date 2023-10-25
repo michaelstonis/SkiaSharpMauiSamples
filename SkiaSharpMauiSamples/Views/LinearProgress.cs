@@ -6,6 +6,8 @@ namespace SkiaSharpMauiSamples.Views;
 
 public class LinearProgress : SKCanvasView
 {
+    private static float _scale;
+
     public static BindableProperty StartingPointProperty =
         BindableProperty.Create(nameof(StartingPoint), typeof(float), typeof(LinearProgress), default(float),
             propertyChanged: (bindable, oldValue, newValue) => (bindable as SKCanvasView)?.InvalidateSurface());
@@ -47,17 +49,13 @@ public class LinearProgress : SKCanvasView
         set { SetValue(ProgressColorProperty, value); }
     }
 
-    public LinearProgress()
-    {
-        this.BackgroundColor = Colors.Transparent;
-    }
-
     protected override void OnHandlerChanged()
     {
         base.OnHandlerChanged();
 
         if (Handler is not null)
         {
+            _scale = (float)DeviceDisplay.Current.MainDisplayInfo.Density;
             this.InvalidateSurface();
         }
     }
@@ -70,25 +68,23 @@ public class LinearProgress : SKCanvasView
 
         canvas.Clear();
 
-        using (var paint = new SKPaint())
-        using (var path = new SKPath())
-        {
+        using var paint = new SKPaint();
+        using var path = new SKPath();
 
-            paint.IsAntialias = true;
-            paint.StrokeCap = SKStrokeCap.Round;
-            paint.Style = SKPaintStyle.Stroke;
-            paint.Color = ProgressColor.ToSKColor();
-            paint.StrokeWidth = ProgressThickness;
+        paint.IsAntialias = true;
+        paint.StrokeCap = SKStrokeCap.Round;
+        paint.Style = SKPaintStyle.Stroke;
+        paint.Color = ProgressColor.ToSKColor();
+        paint.StrokeWidth = ProgressThickness * _scale;
 
-            var start = (((e.Info.Width) * (this.StartingPoint / 100)) + ProgressThickness).Clamp(ProgressThickness, e.Info.Width - ProgressThickness);
-            var end = (((e.Info.Width) * (this.EndingPoint / 100)) - ProgressThickness).Clamp(ProgressThickness, e.Info.Width - ProgressThickness);
+        var start = ((e.Info.Width * (this.StartingPoint / 100)) + ProgressThickness).Clamp(ProgressThickness, e.Info.Width - ProgressThickness);
+        var end = ((e.Info.Width * (this.EndingPoint / 100)) - ProgressThickness).Clamp(ProgressThickness, e.Info.Width - ProgressThickness);
 
-            var verticalCenter = e.Info.Height / 2f;
+        var verticalCenter = e.Info.Height / 2f;
 
-            path.MoveTo(start, verticalCenter);
-            path.LineTo(end, verticalCenter);
+        path.MoveTo(start, verticalCenter);
+        path.LineTo(end, verticalCenter);
 
-            canvas.DrawPath(path, paint);
-        }
+        canvas.DrawPath(path, paint);
     }
 }
