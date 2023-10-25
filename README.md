@@ -1,1 +1,1 @@
-# SkiaSharpMauiSamples
+# SkiaSharp .NET MAUI Samples
