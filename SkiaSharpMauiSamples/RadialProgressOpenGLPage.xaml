@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SkiaSharpMauiSamples.Views"
+             x:Class="SkiaSharpMauiSamples.RadialProgressOpenGLPage"
+             Title="RadialProgressOpenGLPage">
+    <Grid Padding="8">
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Tapped="Handle_Tapped" />
+        </Grid.GestureRecognizers>
+        <local:CircularProgressOpenGL x:Name="Progress1"
+                                      Grid.Row="0"
+                                      Grid.Column="0"
+                                      VerticalOptions="Fill"
+                                      HorizontalOptions="Fill"
+                                      StartingDegrees="-45"
+                                      EndingDegrees="270"
+                                      ProgressColor="Navy" />
+        <local:CircularProgressOpenGL x:Name="Progress2"
+                                      Grid.Row="0"
+                                      Grid.Column="0"
+                                      VerticalOptions="Fill"
+                                      HorizontalOptions="Fill"
+                                      Margin="24"
+                                      ProgressThickness="24"
+                                      StartingDegrees="-90"
+                                      EndingDegrees="315"
+                                      ProgressColor="Fuchsia"
+                                      Jagged="True" />
+        <local:CircularProgressOpenGL x:Name="Progress3"
+                                      Grid.Row="0"
+                                      Grid.Column="0"
+                                      VerticalOptions="Fill"
+                                      HorizontalOptions="Fill"
+                                      Margin="60"
+                                      ProgressThickness="16"
+                                      StartingDegrees="0"
+                                      EndingDegrees="180"
+                                      ProgressColor="Green" />
+    </Grid>
+</ContentPage>

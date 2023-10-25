@@ -2,24 +2,25 @@
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+    public MainPage()
+    {
+        InitializeComponent();
+    }
 
-	public MainPage()
-	{
-		InitializeComponent();
-	}
+    void RadialProgress_Clicked(object sender, System.EventArgs e)
+    {
+        this.Navigation.PushAsync(new RadialProgressPage());
+    }
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
+    void RadialProgressOpenGl_Clicked(object sender, System.EventArgs e)
+    {
+        this.Navigation.PushAsync(new RadialProgressOpenGLPage());
+    }
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+    void LinearProgress_Clicked(object sender, System.EventArgs e)
+    {
+        this.Navigation.PushAsync(new LinearProgressPage());
+    }
 }
 
 

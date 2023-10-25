@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SkiaSharpMauiSamples.Views"
+             x:Class="SkiaSharpMauiSamples.RadialProgressPage"
+             Title="RadialProgressPage">
+    <Grid Padding="8">
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Tapped="Handle_Tapped" />
+        </Grid.GestureRecognizers>
+        <local:CircularProgress x:Name="Progress1"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                EndingDegrees="270"
+                                ProgressColor="#FF367E"
+                                ProgressThickness="24"
+                                StartingDegrees="-90"
+                                Jagged="False" />
+        <local:CircularProgress x:Name="Progress2"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Margin="24"
+                                EndingDegrees="315"
+                                ProgressColor="#B3FE45"
+                                ProgressThickness="24"
+                                StartingDegrees="-90"
+                                Jagged="False" />
+        <local:CircularProgress x:Name="Progress3"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Margin="48"
+                                StartingDegrees="-90"
+                                EndingDegrees="180"
+                                ProgressColor="#00D2D1"
+                                ProgressThickness="24"
+                                Jagged="False" />
+    </Grid>
+</ContentPage>
